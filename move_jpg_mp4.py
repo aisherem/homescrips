@@ -9,10 +9,11 @@ def get_path():
     return path
 path = get_path()
 # print (path)
-path = "/mnt/c/фото/Новый год. Школьники/"
+# path = "/mnt/c/фото/Новый год. Школьники/"
 
 def make_dir(file):
     dir = file.split()[0]
+    dir = dir.replace('-', '_')
     return (dir)
     
 onlyfiles = [f for f in listdir(path) if isfile(join(path, f))] #Создание списка файлов
