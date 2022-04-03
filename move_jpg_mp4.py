@@ -10,6 +10,8 @@ def get_path():
 path = get_path()
 # print (path)
 # path = "/mnt/c/фото/Новый год. Школьники/"
+path = "/mnt/c/tmp/f/"
+
 
 def make_dir(file):
     dir = file.split()[0]
@@ -24,7 +26,7 @@ list_mp4 = [] # создание mp4 списка файлов
 for f in onlyfiles:
     if f.endswith(".jpg") or f.endswith(".JPG"):
         list_jpg.append(f)
-    elif f.endswith('.mp4'):
+    elif f.endswith('.mp4') or f.endswith('.MOV') or f.endswith('.MP4'):
         list_mp4.append(f)
 
 for f in list_jpg:
