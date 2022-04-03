@@ -42,8 +42,8 @@ for f in list_jpg:
     im = Image.open(f"{path}{f}")
     try:
         camera =  im._getexif()[272]
-        if camera == 'SM-A515F': source_name = 'a52'
-        if camera == 'SM-A505FM': source_name = 'a51'
+        if camera == 'SM-A515F': source_name = 'a51'
+        if camera == 'SM-A505FM': source_name = 'a50'
         if camera == 'iPhone 7': source_name = 'iph7'
     except: pass
     # print(camera)
