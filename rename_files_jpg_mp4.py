@@ -21,7 +21,7 @@ def get_path():
 path = get_path()
 # print (path)
 # path = "/mnt/c/фото/Новый год. Школьники/"
-path = "/mnt/c/tmp/f/"
+path = "/mnt/c/tempo/"
 
 onlyfiles = [f for f in listdir(path) if isfile(join(path, f))] #Создание списка файлов
 
@@ -42,11 +42,12 @@ for f in list_jpg:
     im = Image.open(f"{path}{f}")
     try:
         camera =  im._getexif()[272]
-        if camera == 'SM-A515F': source_name = 'a51'
-        if camera == 'SM-A505FM': source_name = 'a50'
-        if camera == 'iPhone 7': source_name = 'iph7'
+        if 'SM-A515F' in camera: source_name = 'a51'
+        if 'SM-A505FM' in camera: source_name = 'a50'
+        if 'iPhone 7' in camera: source_name = 'iph7'
+        if 'SM-A325F' in camera: source_name = 'a32'
     except: pass
-    # print(camera)
+    # print(camera, source_name)
     try: 
         if im._getexif()[36867]:
             data = im._getexif()[36867]
@@ -82,14 +83,16 @@ for f in list_mp4:
 for f in list_mp4_2:
     # VID_20211229_140550.mp4 
     f1 = f.split(".")[0]
-    d, t = f1.split("_")
-    date = d[0]+d[1]+d[2]+d[3] + "-" + d[4]+d[5] + "-" + d[6]+d[7] 
-    time = t[0]+t[1] + "-" + t[2]+d[3] + "-" + t[4] + t[5]
-    temp_file_name =  f'{date} {time}'
-    count = 1
-    data_new = str(temp_file_name)
-    while os.path.exists(f'{path}{data_new}.mp4'):
-        data_new = temp_file_name + "-" +str(count)
-        count += 1
-    os.rename (f"{path}{f}", f'{path}{data_new}.mp4')
-    print (f"{f} - > {data_new}.mp4")
+    # print(f1)
+    if "_" in f1:
+        d, t, *num = f1.split("_")
+        date = d[0]+d[1]+d[2]+d[3] + "-" + d[4]+d[5] + "-" + d[6]+d[7] 
+        time = t[0]+t[1] + "-" + t[2]+d[3] + "-" + t[4] + t[5]
+        temp_file_name =  f'{date} {time}'
+        count = 1
+        data_new = str(temp_file_name)
+        while os.path.exists(f'{path}{data_new}.mp4'):
+            data_new = temp_file_name + "-" +str(count)
+            count += 1
+        os.rename (f"{path}{f}", f'{path}{data_new}.mp4')
+        print (f"{f} - > {data_new}.mp4")

@@ -10,7 +10,7 @@ def get_path():
 path = get_path()
 # print (path)
 # path = "/mnt/c/фото/Новый год. Школьники/"
-path = "/mnt/c/tmp/f/"
+path = "/mnt/c/tempo/"
 
 
 def make_dir(file):
