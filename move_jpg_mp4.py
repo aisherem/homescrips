@@ -9,9 +9,7 @@ def get_path():
     return path
 path = get_path()
 # print (path)
-# path = "/mnt/c/фото/Новый год. Школьники/"
-path = "/mnt/c/tempo/"
-
+path = "/mnt/c/tempo/photo/"
 
 def make_dir(file):
     dir = file.split()[0]
@@ -21,7 +19,7 @@ def make_dir(file):
 onlyfiles = [f for f in listdir(path) if isfile(join(path, f))] #Создание списка файлов
 
 list_jpg = [] # создание jpg списка файлов
-list_mp4 = [] # создание mp4 списка файлов
+list_mp4 = [] # создание mp4, mov списка файлов
 
 for f in onlyfiles:
     if f.endswith(".jpg") or f.endswith(".JPG"):

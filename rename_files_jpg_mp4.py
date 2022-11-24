@@ -20,8 +20,7 @@ def get_path():
     return path
 path = get_path()
 # print (path)
-# path = "/mnt/c/фото/Новый год. Школьники/"
-path = "/mnt/c/tempo/"
+path = "/mnt/c/tempo/photo/"
 
 onlyfiles = [f for f in listdir(path) if isfile(join(path, f))] #Создание списка файлов
 
@@ -45,6 +44,7 @@ for f in list_jpg:
         if 'SM-A515F' in camera: source_name = 'a51'
         if 'SM-A505FM' in camera: source_name = 'a50'
         if 'iPhone 7' in camera: source_name = 'iph7'
+        if 'iPhone 8' in camera: source_name = 'iph8'
         if 'SM-A325F' in camera: source_name = 'a32'
     except: pass
     # print(camera, source_name)
