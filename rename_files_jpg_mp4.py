@@ -46,6 +46,8 @@ for f in list_jpg:
         if 'iPhone 7' in camera: source_name = 'iph7'
         if 'iPhone 8' in camera: source_name = 'iph8'
         if 'SM-A325F' in camera: source_name = 'a32'
+        if 'CH7n' in camera: source_name = 'c18p'
+        if 'CK7n' in camera: source_name = 'c20p'
     except: pass
     # print(camera, source_name)
     try: 
