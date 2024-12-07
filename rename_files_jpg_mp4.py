@@ -14,13 +14,7 @@ def transformdate(data):
     # 2021:12:29 14:07:22
     return  (data.replace(":", "-"))
 
-def get_path():
-    path = pathlib.Path(__file__).parent.absolute()
-    path = f'{path}/'
-    return path
-path = get_path()
-# print (path)
-path = "/mnt/c/tempo/photo/"
+path = "/mnt/c/PHOTO2024/Z2/"
 
 onlyfiles = [f for f in listdir(path) if isfile(join(path, f))] #Создание списка файлов
 
@@ -70,10 +64,18 @@ for f in list_jpg:
 for f in list_mp4:
     # VID_20211229_140550.mp4 
     f1 = f.split(".")[0]
-    _, d, t = f1.split("_")
+    filename = f1.split("_")
+    if len(filename) == 3:
+        _, d, t = filename
+        add = None
+    elif len(filename) == 4:
+         _, d, t, add = filename
     date = d[0]+d[1]+d[2]+d[3] + "-" + d[4]+d[5] + "-" + d[6]+d[7] 
     time = t[0]+t[1] + "-" + t[2]+d[3] + "-" + t[4] + t[5]
-    temp_file_name =  f'{date} {time}'
+    if add:
+        temp_file_name =  f'{date} {time} {add}'
+    else:
+        temp_file_name =  f'{date} {time}'
     count = 1
     data_new = str(temp_file_name)
     while os.path.exists(f'{path}{data_new}.mp4'):
@@ -85,16 +87,19 @@ for f in list_mp4:
 for f in list_mp4_2:
     # VID_20211229_140550.mp4 
     f1 = f.split(".")[0]
-    # print(f1)
-    if "_" in f1:
+    if "None" in f1:
+        print(f1)
+        date, time, n = f1.split()
+        temp_file_name =  f'{date} {time}'
+    elif "_" in f1:
         d, t, *num = f1.split("_")
         date = d[0]+d[1]+d[2]+d[3] + "-" + d[4]+d[5] + "-" + d[6]+d[7] 
         time = t[0]+t[1] + "-" + t[2]+d[3] + "-" + t[4] + t[5]
         temp_file_name =  f'{date} {time}'
-        count = 1
-        data_new = str(temp_file_name)
-        while os.path.exists(f'{path}{data_new}.mp4'):
-            data_new = temp_file_name + "-" +str(count)
-            count += 1
-        os.rename (f"{path}{f}", f'{path}{data_new}.mp4')
-        print (f"{f} - > {data_new}.mp4")
+    count = 1
+    data_new = str(temp_file_name)
+    while os.path.exists(f'{path}{data_new}.mp4'):
+        data_new = temp_file_name + "-" +str(count)
+        count += 1
+    os.rename (f"{path}{f}", f'{path}{data_new}.mp4')
+    print (f"{f} - > {data_new}.mp4")
