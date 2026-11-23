@@ -9,7 +9,10 @@ def get_path():
     return path
 path = get_path()
 # print (path)
-path = "/mnt/c/PHOTO2024/PHOTO/"
+path = "/mnt/c/PHOTO/"
+path = "/mnt/c/2025/"   
+
+
 
 def make_dir(file):
     dir = file.split()[0]
